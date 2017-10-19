@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片切换</title>
+	<style type="text/css">
+		#pic{width: 400px;height: 400px;margin: 100px auto;position: relative;border: 5px solid #000;}
+		img{width: 100%;height: 100%;}
+		ul{position: absolute;top: 20px;right: -60px;}
+		ul li{width: 40px;height: 40px;background: #666;margin-bottom: 15px;list-style: none;}
+		ul li.active{background: pink;}
+		p,span{position: absolute; left: 0;width: 400px;height: 30px;line-height: 30px;text-align: center;color: #fff;background: #333;opacity: 0.5;}
+		p{margin: 0;bottom: 0;}
+		span{top: 0;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aUrl=['1.jpg','2.jpg','3.jpg','4.jpg'];
+			var aText=['带你去看星空','你永远在我可望不可及的地方','我一直都在从未离开','大手牵小手'];
+			var num=0;
+			var oDiv=document.getElementById("pic");
+			var img=oDiv.getElementsByTagName('img')[0];
+			var ul=oDiv.getElementsByTagName('ul')[0];
+			var li=ul.getElementsByTagName('li');
+			var p=oDiv.getElementsByTagName('p')[0];
+			var span=oDiv.getElementsByTagName('span')[0];
+			for(var i=0;i<aUrl.length;i++){
+				ul.innerHTML+="<li></li>"
+			}
+			var timer=null;
+			function autoPage(){
+				timer=setInterval(function(){
+					num++;
+					num%=aUrl.length;
+					fiTab();
+				},1000);
+			}
+			setTimeout(autoPage, 2000)
+			oDiv.onmousemove=function(){
+				clearInterval(timer);
+			}
+			oDiv.onmouseout=autoPage;
+			function fiTab(){
+				img.src=aUrl[num];
+				p.innerHTML=aText[num];
+				span.innerHTML=1+num+"/"+aText.length;
+				for(var i=0;i<li.length;i++){
+							li[i].className='';
+						}
+				li[num].className='active';
+			}
+			fiTab();
+			for(var i=0;i<li.length;i++){
+				li[i].index=i;
+				li[i].onclick=function(){
+					num=this.index;
+					fiTab();
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="pic">
+		<img src="" alt="">
+		<ul>
+		</ul>
+		<p id="P"></p>
+		<span></span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>博学谷-js基础</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="pc" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<style>
+		.cls,.show{
+			width: 100px;
+			height: 100px;
+			background-color: #09c;
+		}
+		.show{ display: block;  }
+		.hide{ display: hide; }
+	</style>
+</head>
+<body>
+	<!-- <button id="btn" >隐藏</button>
+	<div id="box" class="cls"></div> -->
+	
+	<div id="box"></div>
+
+	<script>
+var o = {
+  fn: function() {
+    console.log(o.fn)
+  }
+}
+
+console.log(o.fn());
+
+//原型链
+// 简单的说  定义 一个方法就会有个 Prototype 属性 该属性 指向了方法本身 这个 先记着
+// constructor 说准确点是这玩意 指向了 方法本身- -  最住要 你知道函数有个 prototype 他下面有个  constructor
+// 然后 如果是 其他玩意是 没有  prototype 的 只有 __proto__   这个之前给你看过 应该知道吧
+// function   fun (){
+
+// }
+// 这里面 有个地方比较绕的就是 Function 本身 是继承自 他本身的  然后他的原型又指向了 Object 
+// Object 的 原型 又指向了它本身 然后 在往上找就是null
+// 简单 写下
+
+//从最初的 构造函数开始 这玩意承上启下的 
+function  Peole(){// 定义构造函数
+	this.name='111'
+}
+Peole.prototype // 得出的还是Peole 构造函数本身
+Peole.__proto__ // 得出的就是Function  还是那句话 所有的函数都来自 Function
+
+// 先往下 一会再往上找 
+
+var  peo = new Peole();// 实例化 构造函数
+peo.__proto__ // 指向了Peole 因为 是通过 new Peole 得出的 也就是专业用语来说的话  peo 是Peole 的实例
+
+// 现在说的这点 知道了吗  然后 主要的就是 构造函数 继承自 Functon  喝 Function 继承自 Object 这个
+// 这块 你可以话十分钟 看下视频- - 比我说的清除点我觉得我懂了再看下视频吧 嘿嘿~ 熟悉 下他里面 说的更清除
+// 你画 十分钟看下吧  先关了啊
+
+
+
+// fun.prototype  == fun()
+
+
+		//了解arguments
+		// function a(){
+		// 	var b=0;
+		// 	for(var i=0;i<arguments.length;i++){
+		// 		b+=arguments[i];	
+		// 	}
+		// 	return b;
+		// }
+		// a(2,2,3,3);
+		//call和apply
+		// var name='aaa'
+		// var fun=function(){
+		// 	console.log(this.name)
+		// }
+		// fun();
+		// var p1={'name':'111'}
+		// var p2={'name':'222222222222222'}
+		// fun.apply(p1)
+		// fun.call({name:'你说吃啥'})
+		// fun.call(p2)
+			
+		/* js dom */
+		//追加类名
+		// var btn =document.getElementById("btn");
+		// var box = document.getElementById("box");
+		// btn.onclick = function(){
+		// 	if(btn.innerText=='隐藏'){
+		// 		box.className = 'hide';
+		// 		btn.innerText='显示';
+		// 	}else{
+		// 		box.className = 'show';
+		// 		btn.innerText='隐藏';
+		// 	}
+			
+		// }
+
+
+		// js 的的undefined 类型
+		//var num; //没有给值 该变量就说undefined ;
+		// null  用来清除变量
+
+		//js 中的 布尔类型
+		// var  b=false,b1=null,b3=0,b4='';b5=undefined;
+
+		// var a=1;
+		// var c=1;
+		// console.log(a++); //先参与运算 后进行 自+  也就说先 打印 a的值 然后进行 ++
+		// console.log(++c); //先自加 之后在参与运算 也就说 先让c +1 然后在 输出c 的值
+
+		//var a=1;var b = ++a + ++a;console.log(b);//
+		//              2 + 3   b=5
+
+		//var a=1; var b= a++ +  ++a ; console.log(b);
+		//              1    + 3       b= 4;
+
+		//var a=1; var b=a++ + a++ ; console.log(b);
+		//			   1 + 2     b =3;
+
+		//var a=1;var b= ++a + a++ ;console.log(b);
+		//				2 + 2 	b=4
+
+		// &&  运算   只要有一个味 false 就返回 false
+
+		// || 运算。只要有一个味 true  就会返回 true	
+
+		//短路运算 返回 对表达式结果 起决定性作用的值
+		//console.log('1' && '我是返回值');
+
+
+
+		//js 中检测数据类型  typeof  返回的是个字符串
+		// console.log(typeof 222); //number
+		// console.log(typeof '322');  //string
+		// console.log(typeof true);  // boolean
+		// console.log(typeof  null);  // object 
+		// console.log(typeof  undefined);  //undefined
+
+
+		// var  a=10;
+		// ++a;     // 11
+		// var c=++a +2;  // 12 + 2  14
+		// console.log(c);
+
+		// var b=10;
+		// b++;   // 11
+		// var c=b++ +2; // 11 +2  13
+		// console.log(c)
+
+		// //a = 7  b =15  c= 10   d = 8 + 15 * 2 - 12  d = 26
+		// var a= 1+2 * 3;
+		// var b=2* 4+5 -4 +12 /2 ;
+		// var c= 2*(4+5) -(4+12) /2 ;
+		// var d=++a +b *2 -(c+2);
+
+
+		// 逻辑操作符 返回的是 布尔值
+		//console.log(1 && 2);//  2
+
+		// 逻辑操作符 优先级。 ! >  && > ||	
+
+		//var a=3 > 5 && 2 <7  && 3  ==4;
+		//a = false && true && false ;——》 a=false;
+		//console.log(a);
+
+		//var  b=3 <=4 || 3 > 1  || 3 != 2; //b= true;
+		//console.log(b);
+
+		//var c= 2=== "2";
+		//console.log(c) ;//false
+
+		//var d= !c || b && a;
+		//console.log(d); // true || false  d =true;
+
+		// var num =10;
+		// num +=2; //每次 自加2    相当于 num =num+2;
+
+		// var re=5;
+		//re *=5; //25
+
+		//var a=10,b=20,c=30;// 用 ， 来声明 多个变量
+
+
+		/*js 继承*/
+
+		// function A(){ //定义构造函数
+		// 	this.abc=12;
+		// }
+
+		// A.prototype.show =function(){ //定义原型方法 打印该 函数的属性
+		// 	console.log(this.abc);
+		// }
+
+		// B.prototype =A.prototype;// 让B的原型 等于 A 的原型
+		// //如果再
+
+		// function B(){ //定义B构造函数
+		// 	A.call(this);// 吧当前的this指向进行修改
+		// }
+		// B.prototype.cons = function(){// 定义b 的原型方法
+		// 	console.log(333);
+		// }
+
+		// var b=new B();
+		// b.show();
+		// b.cons();
+
+		//继承用到的父类
+		// function Animal(name,age){
+		// 	//属性
+		// 	this.name =name || 'Animal';
+		// 	this.age= age || 10;
+		// 	//实例 方法
+		// 	this.sleep =function (){
+		// 		console.log(this.name +'睡觉了');
+		// 	}
+		// }
+
+		// //原型方法
+		// Animal.prototype.eat =function(food){
+		// 	console.log(this.name+'在吃'+food);
+		// };
+
+		// Animal.prototype.motion =function(amt){
+		// 	console.log(this.name +'正在'+amt);
+		// }
+
+		// /****************原型链 继承***************/
+		// // PS 将父类的实例 做为 子类的原型
+		// function Cat(){
+
+		// }
+
+		// // 在new 之前 会调用不到 
+		// // Cat.prototype.showName = function(){
+		// // 	console.log(this.name);
+		// // }
+
+		// Cat.prototype =new Animal();
+		// //在new 之后增加 自加点 原型方法
+		// Cat.prototype.showName = function(){
+		// 	console.log('当前的动物名称是'+this.name);
+		// }
+
+		// Cat.prototype.name='cat';
+		// Cat.prototype.age=20;
+
+
+		// var cat = new Cat();
+		// console.log(cat.name);
+		// console.log(cat.name+'今年'+cat.age+'岁');
+		// cat.eat('骨头');
+		// cat.sleep();
+		// cat.showName();
+		// cat.motion('跑步');
+		// console.log(cat instanceof Animal);//cat 是 Animall的实例。返回true
+		// console.log(cat instanceof Cat); //cat 也是Cat 的实例
+
+		// var dog  =new Cat();
+		// dog.eat('肉');
+
+
+		/*优缺点*/
+		// 纯粹的继承关系 实例是子类的实例，也是父类的实例
+		// 父类新增原型方法 /原型属性，子类 都能够 访问；
+		// 简单 易于实现
+
+		// 如果要新增原型方法和属性，必须要在 new Animal这句话执行之后，不能放到构造器中
+		// 可以在Cat 构造函数中， 为Cat实例增加实例属性
+		// 无法实现多个继承
+		// 创建子类实例时。无法向父类构造函数传递参数 
+		// 来自原型对象的引用属性 是所有实例 共享的	
+
+
+		// for循环打印出 99 乘法表
+		// for (var i = 1; i <=9; i++) {
+		// 	for(var j=1;j<=i;j++){
+		// 		document.write(j+' *  '+ i +'  =  ' + j* i +' &nbsp;');
+		// 	}
+		// 	document.write('<br />')
+		// }
+
+		//定义学生对象 有姓名 性别 分数。说话
+		// var sub =new Object();
+		// sub.name='哇哈哈';
+		// sub.sex='男';
+		// sub.num=80;
+		// sub.say = function(){
+		// 	console.log(sub.name+'说话了');
+		// }
+
+		// console.log(sub.name);
+		// sub.say();
+
+		// 工厂模式 创建函数 
+		// function  createSub(name,sex,num,fn){
+		// 	var sub =new Object();
+		// 	sub.name=name;
+		// 	sub.sex=sex;
+		// 	sub.num=num;
+		// 	sub.fn=fn;
+		// 	return sub;
+		// };
+
+		// var sub1=createSub('哇哈哈','男',30,function(){
+		// 	console.log(333);
+		// })
+
+		// var sub2=createSub('王老吉','女',90,function(){
+		// 	console.log('去火首选');
+		// })
+
+		// console.log(sub1);
+		// console.log(sub2);
+
+
+
+		//js this指向
+		//1 全局中 指向 window
+		//console.log(this);  // window 对象
+
+		// // 2 构造函数中
+		// function Afun(name){
+		// 	this.name =name;
+		// 	console.log(this);
+		// }
+		// var fun = new Afun('aaa');
+
+		// //this 指向 只有在函数 执行 的时候才知道  this 指向的是谁;this 最终指向的是调用他的对象 
+		// function a(){
+		// 	var user='aaaa';
+		// 	console.log(this.user);
+		// 	console.log(this);
+		// }
+		// //var user='bbbbb';
+		// //a();
+
+
+		// var btn=document.getElementById('btn');
+		// btn.onclick= function(){
+		// 	a();
+		// }
+
+
+		// var  a_funu ={
+		// 	user:'this is fun',
+		// 	fn:function(){
+		// 		console.log(this.user);
+		// 	}
+		// }
+
+		// //a_funu.fn();//这里 a_fun 调用了 fn 函数  fn中的this 指向调用他的对象 也就说 a_fun 
+		// //这句话 还可以看作是 window.a_fun.fu();
+
+		// window.a_funu.fn();
+
+		//var btn = document.getElementById('btn');
+
+		//btn.onclick = function(){
+		// 	var _that=this; //把当前的this 存到变量中
+		// 	function fn(){
+		// 		console.log(_that);//此时的 this  还说指向的windo
+		// 	}
+		// 	fn();
+		// }
+
+		// btn.onclick = function(){
+		// 	function fn(){
+		// 		console.log(this);
+		// 	}
+		// 	fn.call(this);//call 作用 改变 this 指向 ；第一个传递的是一个对象，就是要借用的哪个对象
+		// }
+
+		// btn.onclick = function(){
+		// 	var fn= function (){
+		// 		console.log(this);
+		// 	}.call(this);
+		// }
+
+		
+
+		/*call  apply bind 的差别	*/
+
+
+
+
+		// var o={
+		// 	a:10,
+		// 	b:{
+		// 		a:12,
+		// 		fn:function(){
+		// 			console.log(this.a);
+		// 			console.log(this);
+		// 		}
+		// 	}
+		// }
+		// //o.b.fn();
+
+		// var n=o.b.fn;
+		// n();
+
+		//如果返回值是一个对象，那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。
+
+
+		// function Fun(){
+		// 	this.name='aaaa';
+		// 	return Object;
+		// }
+		// var f=new Fun();
+		// console.log(f.name);
+
+		// "use strict"
+		// console.log(this);
+
+
+
+		//冒泡排序
+		//var n=0;
+		//var arr=[21,53,54,64,645,6,57,22,203,23,44,42,2,424];
+		// for(var i=0;i<arr.length-1;i++){
+		// 	for(var j=0;j<arr.length-1;j++){
+		// 		if(arr[j] > arr[j+1]){
+		// 			var newnum=arr[j];
+		// 			arr[j]=arr[j+1];
+		// 			arr[j+1]=newnum;
+		// 		}
+		// 		n++;
+		// 	}
+
+		// }
+
+		// var arr=[1,2,3,4,5];
+		// for(var i=0;i<arr.length-1;i++){
+		// 	var flag=true;
+		// 	for(var j=0;j<arr.length-1 -i;j++){
+		// 		if(arr[j] > arr[j+1]){
+		// 			flag=false;
+		// 			var newnum=arr[j];
+		// 			arr[j]=arr[j+1];
+		// 			arr[j+1]=newnum;
+		// 		}
+		// 		n++;
+		// 	}
+		// 	if(flag){
+		// 		break;
+		// 	}
+		// }
+		// console.log(n);
+		// console.log(arr);
+
+
+
+		//函数
+		//函数 参数 方便 多次调用
+
+		// function fun(num1,num2){//形参 占位符
+		// 	console.log(num1+num2);
+		// }
+
+		// fun(2,3);
+
+		/*方法作用：求x 到y 蒸熟的和*/
+		// function fun(x,y){
+		// 	var sum=0;
+		// 	for(var i=x;i<=y;i++){
+		// 		sum+=i;
+		// 	}
+		// 	console.log(sum);
+		// }
+		// fun(1,3);
+
+		//全局变量
+		// 在最外层生命的变量 就是全局变量 ，在那里都能够使用
+		// var a='aaa';
+		// function fun1(){
+		// 	console.log(a);//在外层生声明 的变量 在函数内部也能够 使用
+		// }
+
+		// fun1();
+
+		// function fun2(){
+		// 	var b='bbbb';//在函数内部声明的变量 只能在函数内部使用 在外部调用不到
+		// 	c='ccc';//没有 使用var 隐式 声明的全局变量
+
+		// 	console.log(b);
+		// 	console.log(c);
+		// }
+
+		// fun2();
+		// console.log(c);
+
+		// var fun = function(){
+		// 	console.log(33);
+		// }
+
+		// console.log(typeof fun);//返回数据类型 函数也是一种数据
+		// console.log(typeof fun());//
+
+		// // 被当作参数传递的函数 就叫做回调函数
+		// var fun1 = function(f){
+		// 	console.log('fn');
+		// 	f();
+		// }
+
+		// fun1(fun);
+
+
+
+		/*对象*/
+		// var hear = new Object();//声明一个对象
+
+		// hear.name='aaa';//属性。name
+		// hear.age = 88;//属性 年龄
+		// hear.move = function(){
+		// 	console.log(hear.name +'在走');
+		// }
+
+		// console.log(hear.move())
+
+		// //对象字面量
+		// var stu={
+		// 	name:'aa',
+		// 	age:30,
+		// 	sayHi:function(){
+		// 		console.log('aaa');
+		// 	}
+		// };
+
+		// for(var k in stu){
+		// 	console.log(stu[k]);
+		// }
+
+
+		/*js 中的 值类型 和引用类型*/
+		//var num =10;
+		// function fun(num){
+		// 	num =30;
+		// 	console.log(num);
+		// }
+		// fun(num);
+		// console.log(num);
+
+		// function Fun(a){
+		// 	this.a=a,
+		// 	this.sayA =function(){
+		// 		console.log(this.a);
+		// 	} 
+		// }
+		// var f = new Fun('aaa');
+		// f.sayA();
+
+		// var f2=f;
+		// f2.a='bbb';
+		// f2.sayA();
+		// f.sayA();
+
+		/* 数组的操作 */
+
+		//var arr=[24,423,543,65,2,23];
+		//增加
+		//arr.push(2);//增加以个元素， 在数组最后追加
+		//arr.push(11,22,33,44);//在数组之后 追加n 个元素  并返回 新数组的长度
+
+		//arr.pop();//删除 数组 最后一位
+		//arr.reverse();//堆数组 进行 翻转
+		//console.log(arr.toString());//数组转换成字符串
+		//console.log(arr.join()); //数组转换成以 ， 分割的字符串
+		//console.log(arr.join('|'));// 以 | 分割
+		//arr.shift(); //删除数组的第一个元素
+		//arr.unshift('1111');//向 数组前面 添加 元素 可以追加多个
+		//var arr2=['11','aa','vv'];
+		//console.log(arr2.concat(arr));//把2 个数组合并为一个 数组 并返回合并后的数组
+		//console.log(arr);
+		//console.log(arr);
+		//arr.splice(1,3);//删除 数组下标 1 到3 
+		// console.log(arr);
+
+		// var num=[2324,222,131,4242,435345,2242,12312,22];
+		// var numA= num.filter(function(e,index,arr){
+		// 	if(e >2000){
+		// 		return false
+		// 	}
+		// 	return true;
+		// })
+		// console.log(num);
+		// console.log(numA);
+
+
+		/* 对象 */
+		//字面量 创建对象
+		// var o = {};
+		// o.name='111';
+		// o.age =12;
+		// o.sayHello =function(){
+		// 	console.log(o.name);
+		// }
+		// o.sayHello();
+
+		// var o1={};
+		// o1['name'] ='111';
+
+
+		//工厂模式创建对象
+		//缺点 不方便 其他方法 或 函数 区分 
+		//利用工厂创建对象 本质与字面量创建对象是 一样的
+		// 返回的类型 都是object  我们需要有心的创建对象的方法
+
+		// function factoryO(name,age){
+		// 	var o={};
+		// 	o.name =name;
+		// 	o.age =age;
+		// 	o.sayHello = function(){
+		// 		console.log('我都名字是'+o.name+' 我今年'+o.age+'岁了');
+		// 	}
+		// 	return o;
+		// }
+
+		// var getO = factoryO('哇哈哈',20);
+		// getO.sayHello();
+
+		// console.log(Object.prototype.toString.call([]));// 查看对象的类型
+		// console.log(Object.prototype.toString.call(''));
+		// console.log(Object.prototype.toString.call(2));
+		// console.log(Object.prototype.toString.call(true));
+
+
+		//构造器。使用构造函数来创建对象
+		//1 构造函数 和普通函数类似。唯一不同 约定 构造函数的名字 采用 pascal 命名规则【首字母大写】
+		//2 调用构造函数 采用 var a = new 构造函数名。之后返回的就是新创见的对象
+		//3 在构造函数的内部 使用 this 来表示 刚刚创建的对象 如果需要给对象提供成员。this.xxx=xxx
+
+		//构造函数 
+		// 使用构造函数 创建对象 一开始就可以确定 对象的类型
+		// function Person(name,age){
+		// 	this.name = name;
+		// 	this.age =age;
+		// 	this.sayHello = function(){
+		// 		console.log(this.name);
+		// 	}
+		// 	// 不需要return 
+		// }
+
+		// // 调用构造函数 
+		// var a = new Person('aaa',29);
+		// //a.sayHello();
+		// console.log(a.constructor);
+
+		// var b = new Person('bbb',18);
+		// //b.sayHello();
+		// console.log(a instanceof Person);
+
+		//es6 创建对象
+
+		// class Person {
+		// 	constructor(name,age){
+		// 		this.name = name ;
+		// 		this.age = age;
+		// 	}
+		// 	sayHello (){
+		// 		console.log(this.name);
+		// 	}
+		// }
+		// var  p = new Person("哇哈哈",18);
+		// p.sayHello();
+
+		//只 允许输入数字
+		// 如果考虑使用面向对象的方式。完成 该案例 该对象就是文本框
+		// 同时也该具备。输入检查 是否输入数字
+		// 如果是数字可以。如果是 文本  字母 直接忽略
+
+		//function InputNum(){
+		// 	this.inputDom = document.createElement('input');
+		// 	this.inputDom.value = '222';
+		// 	this.inputDom.onclick = function(){
+		// 		var that = this
+		// 		console.log(that.value);
+		// 	}
+		// 	this.appendTo = function(){
+		// 		//dom.appendChild(this.inputDom);
+		// 		document.body.appendChild(this.inputDom);
+		// 	}
+		// }
+
+		// var input1 = new InputNum();
+		// input1.appendTo();
+
+
+		//利用对象 设置 元素的样式
+		// function css(dom,styleList){
+		// 	for(var key in styleList){
+		// 		dom.style[key] = styleList[key];
+		// 	}
+		// }
+
+		// var box = document.getElementById('box');
+		// css(box,{
+		// 	'width':'100px',
+		// 	'height':'100px',
+		// 	'border':'1px solid #ccc'
+		// });
+
+		//面向对象的 特征
+		// 抽象 ：只有在具体的环境中 对象才可以表示具体的事物，在程序中 实际只考虑 对象的目标数据 / 局部性
+		// 抽取 局部的信息 只拿我们需要的东西
+
+		//封装 ： 将 具体的操作步骤打包起来 不需要知道内部 是如何处理的，内部是否复杂，只需要知道怎么去使用
+		// 比如 电脑 电视机 空调 
+		// 函数 -》 简单的封装
+
+		//继承性。
+		// 在 OOP 当中表示的就是 扩展 ： 原来已经有一个对象了在其基础上 增加一些东西 成为 新的对象 此时新对象就上继承原来的对象
+
+		//多态：多种状态 也就是说 一个变量 调用 某一个方法 得到不同 的结果 就说多态
+		// js 中并没有多大的 作用 js 是弱类型  语言	
+
+		// dom 对象
+		// dom 的基本操作。增删查改
+		// dom 是：文档对象模型 就是将每一个html标签 当作 节点对象来看待 那么所有的标签就可以看成一个节点数树
+        // 增 增加 节点增加 内容 增加属性增加 样式
+        // 在html 中所有的内容都是节点 对象，因此   <body>嘻嘻哈哈 哇哈哈</body>  这里的文本标签全部都是对象
+
+
+        /*******js  的数据类型 *******/
+        // 1. 简单类型 值类型。 
+        //	string     number   布尔
+        // 基本数据类型的变量。存储 数据本身。  基本类型的存储特征
+        var  num = 123;  //在内存中开辟一段空间 这个内存就说num 存储的就是 数字 123
+
+        // 2. 复杂类型。 符合类型  引用类型
+        //   对象。正则。数组。 object 
+        // 引用类型 中的数据 个数可能很大
+
+        // 3。空类型。 null undefined 
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>价格计算</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementById('ul')
+			var aLi=oUl.getElementsByTagName('li'); 
+			for(var i=0;i<aLi.length;i++){
+				f1(aLi[i]);
+			}
+			
+			function f1(aLi){
+				var aInput=aLi.getElementsByTagName('input');
+				var aStrong=aLi.getElementsByTagName('strong')[0];
+				var aEm=aLi.getElementsByTagName('em')[0];
+				var aSpan=aLi.getElementsByTagName('span')[0];
+				var n1=Number(aStrong.innerHTML);
+				var n2=parseFloat(aEm.innerHTML);
+				aInput[0].onclick=function(){
+					n1--;
+					if(n1<=0){
+						n1=0;
+					}
+					aStrong.innerHTML=n1;
+					var n3=n1*n2;
+					n3=n3.toFixed(2);
+					aSpan.innerHTML=n3;
+				}
+				aInput[1].onclick=function(){
+					n1++;
+					aStrong.innerHTML=n1;
+					var n3=n1*n2;
+					n3=n3.toFixed(2);
+					aSpan.innerHTML=n3;
+				}
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<ul style="margin:100px" id="ul">
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value='+'>
+			单价：<em>8.53元</em>
+			小计：<span></span>
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value='+'>
+			单价：<em>7.3元</em>
+			小计：<span></span>
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value='+'>
+			单价：<em>12.69元</em>
+			小计：<span></span>
+		</li>
+	</ul>
+</body>
+</html>

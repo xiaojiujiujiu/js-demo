@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js 日期对象</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			setInterval(toTime, 1000)
+			function toTime(){
+				var str='';
+				var oBody=document.body;
+				var items=new Date();
+				var iYeay=items.getFullYear();
+				var iMonth=items.getMonth()+1;
+				var iDate=items.getDate();
+				var iDay=items.getDay();
+				var iHours=items.getHours();
+				var iMinutes=items.getMinutes();
+				var iSeconds=items.getSeconds();
+				if(iDay===0){iDay="星期日"};
+				if(iDay===1){iDay="星期一"};
+				if(iDay===2){iDay="星期二"};
+				if(iDay===3){iDay="星期三"};
+				if(iDay===4){iDay="星期四"};
+				if(iDay===5){iDay="星期五"};
+				if(iDay===6){iDay="星期六"};
+				str=iYeay+'年'+iMonth+"月"+iDate+"日"+iDay+toTwo(iHours)+":"+toTwo(iMinutes)+":"+toTwo(iSeconds);
+				oBody.innerHTML=str;
+			}
+			function toTwo(n){
+				return n<10?"0"+n:""+n;
+			}
+		}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

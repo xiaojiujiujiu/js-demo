@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for</title>
+	<style type="text/css">
+	body{overflow: hidden;}
+	div{width: 50px;height: 50px;line-height: 50px;text-align: center;color: #fff;background: red;position: absolute; top: 0; left: 0}
+</style>
+</head>
+
+<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementsByTagName('div');
+		for(var i=0;i<=100;i++){
+			document.body.innerHTML+='<div>'+i+'</div>';
+			oDiv[i].style.left=i*60+'px';
+
+			if(i!=0 && i%10==0){
+				document.body.innerHTML+="<br/>";
+			
+			}
+		}
+	
+
+	}
+</script>
+<body>
+</body>
+</html>

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="js/angular.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <style>
+        table{ width:70%;margin:20px auto;}
+        table td{border:1px solid #ccc; }
+    </style>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtrller">
+        <div>
+            <input type="text" placeholder="请输入搜索内容" ng-model="searchText" />
+            <input type="button" ng-click="showTop()" value="搜索" />
+        </div>
+        <table>
+            <tr>
+                <th>标题</th>
+                <th>内容</th>
+                <th>数量</th>
+                <th>单价</th>
+            </tr>
+            <tr ng-repeat="item in dataList" id="list_{{item.search}}">
+                <td ng-bind="item.name"></td>
+                <td ng-bind="item.content"></td>
+                <td ng-bind="item.num"></td>
+                <td><input type="text" ng-model="item.pay" /></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var myapp = angular.module("myApp", []);
+        myapp.controller("myCtrller", function ($scope) {
+            $scope.dataList = [
+                { 'name': '11嘻哈猴', 'content': '嗯哼哈嘿', 'num': 4, 'pay': 50, 'search': '123456' },
+                { 'name': '22嘻哈猴', 'content': '嗯哼哈嘿', 'num': 5, 'pay': 50, 'search': '2222' },
+                { 'name': '33嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '44444' },
+                { 'name': '44嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '555555' },
+                { 'name': '55嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '666666' },
+                { 'name': '66嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '777777' },
+                { 'name': '77嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '999999' },
+                { 'name': '88嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '00000' },
+                { 'name': '99嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'rrrtrr' },
+                { 'name': '10嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'ergeg' },
+                { 'name': '44嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'egegeg' },
+                { 'name': '77嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'fsfssd' },
+                { 'name': '99嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'qeqeq' },
+                { 'name': '989嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'egegerg' },
+                { 'name': '909嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'sfdsfsf' },
+                { 'name': '88嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'qeqeqe' },
+                { 'name': '40嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'egregeg' },
+                { 'name': '11嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'retrer' },
+                { 'name': '22嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '353453' },
+                { 'name': '33嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '223423' },
+                { 'name': '44嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'egrege' },
+                { 'name': '55嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '232fwf' },
+                { 'name': '66嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '3453g3rrg' },
+                { 'name': '77嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'gergerr' },
+                { 'name': '88嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '43453453' },
+                { 'name': '99嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'hhrthr' },
+                { 'name': '10嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '454646' },
+                { 'name': '44嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'tyjtj' },
+                { 'name': '77嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': '5676583' },
+                { 'name': '99嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'rrhtrht' },
+                { 'name': '989嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'rthrhrh' },
+                { 'name': '909嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'hrthrhr' },
+                { 'name': '88嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'vvevvv' },
+                { 'name': '40嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'fffff' },
+                { 'name': '11嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'ttttt' },
+                { 'name': '22嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'hhhhh' },
+                { 'name': '33嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'fsfsfs' },
+                { 'name': '44嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'asada' },
+                { 'name': '55嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'asaadde' },
+                { 'name': '66嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'eegeg' },
+                { 'name': '77嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'fgfgbfb' },
+                { 'name': '88嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'yrtyr' },
+                { 'name': '99嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'tjytyjtjy' },
+                { 'name': '10嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'ykui' },
+                { 'name': '44嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'lilil' },
+                { 'name': '77嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'iiio' },
+                { 'name': '99嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'ioioi' },
+                { 'name': '989嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'iiiii' },
+                { 'name': '909嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'wwfw' },
+                { 'name': '88嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'sdssddss' },
+                { 'name': '40嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'vvfvvf' },
+                { 'name': '11嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'asaasaaas' },
+                { 'name': '22嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'fvvfvvfd' },
+                { 'name': '33嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'eregegreg' },
+                { 'name': '44嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'hrhrhrh' },
+                { 'name': '55嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'reregegeg' },
+                { 'name': '66嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'egeg' },
+                { 'name': '77嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'wwwe' },
+                { 'name': '88嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'egegege' },
+                { 'name': '99嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'rrrrweqw' },
+                { 'name': '10嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'rrrrrr' },
+                { 'name': '44嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'eeeeee' },
+                { 'name': '77嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'aaaaaa' },
+                { 'name': '99嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'sssss' },
+                { 'name': '989嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'vvvvvdd' },
+                { 'name': '909嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'dbdbdb' },
+                { 'name': '88嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'bdbdbb' },
+                { 'name': '40嘻哈猴', 'content': '嗯哼哈嘿', 'num': 3, 'pay': 50, 'search': 'nnnn' }
+            ];
+
+            $scope.searchText = '';
+
+            $scope.showTop = function () {
+                if (!!$scope.searchText) {
+                    var id = 'list_' + $scope.searchText;
+                    var eventId = document.getElementById(id);
+                    var trList = document.getElementsByTagName('tr');
+                    if (trList && trList.length > 0) {
+                        for (var i = 0; i < trList.length; i++) {
+                            trList[i].style.backgroundColor = '';
+                        }
+                    }
+                    var topNum = eventId.offsetTop;  //得到距离顶部的距离
+                    eventId.style.backgroundColor = 'red';
+                    $(window).scrollTop(topNum);
+                    
+                } else {
+                    alert('请输入搜索内容');
+                }
+
+            }
+           
+        })
+    </script>
+</body>
+</html>

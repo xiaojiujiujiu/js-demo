@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>飞飞</title>
+	<script type="text/javascript" src='index.js'></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var str='';
+			var len=20;
+			var adiv=document.getElementsByTagName('div');
+			var timer=null;
+			var num=0;
+			var flag=true;//做是向下还是向上的 判断
+			for(var i=0;i<len;i++){
+				str+='<div style="width:50px;height:50px;background:red;position:absolute;top:0;left:'+i*60+'px"></div>'
+			}
+			document.body.innerHTML=str;
+			document.onclick=function(){
+				if( num != 0){return false; }
+				if(flag){
+					clearInterval(timer);
+					timer=setInterval(function(){
+						doMove(adiv[num],"top",15,500);
+						num++;
+						if(num===len){
+							clearInterval(timer);
+							flag=false;
+							num=0;
+						}
+					}, 100)	
+				}else{
+					clearInterval(timer);
+					timer=setInterval(function(){
+						doMove(adiv[num],"top",15,0);
+						num++;
+						if(num===len){
+							clearInterval(timer);
+							flag=true;
+							num=0;
+						}
+					}, 100)	
+				}
+				
+			}
+						
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

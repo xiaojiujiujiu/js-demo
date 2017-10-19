@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>取模</title>
+	<style type="text/css">
+		li{margin-bottom: 3px;line-height: 30px;list-style:none;width: 100%;height: 30px;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var li=document.getElementsByTagName('li');
+			var arr=['red','yellow','blue'];
+			for(var i=0;i<li.length;i++){
+				//li[i].index=i;
+				var str='';
+				li[i].style.background=arr[i%arr.length];
+				li[i].onmouseover=function(){
+					str=this.style.background;
+					this.style.background='gray'
+				}
+				li[i].onmouseout=function(){
+					//this.style.background=arr[this.index%arr.length];
+					this.style.background=str;
+				}
+				li[i].onclick=function(){
+					this.style.background='black';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

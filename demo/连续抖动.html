@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抖一抖</title>
+	<style type="text/css">
+	body{background: #333;}
+		img{width: 100px;height: 100px;position: absolute;top:100px;}
+		*{margin:0;padding:0;}
+	</style>
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oImg=document.getElementsByTagName('img');
+			for(var i=0;i<oImg.length;i++){
+				oImg[i].style.left=80+i*120+'px';
+				oImg[i].onmousemove=function(){
+					shake(this,"top")
+				}
+			}
+			
+		}
+	</script>
+</head>
+<body>	
+		<img src='1.jpg'/>
+		<img src='2.jpg'/>
+		<img src='3.jpg'/>
+		<img src='4.jpg'/>
+		<img src='1.jpg'/>
+		<img src='2.jpg'/>
+		<img src='3.jpg'/>
+		<img src='4.jpg'/>
+</body>
+</html>

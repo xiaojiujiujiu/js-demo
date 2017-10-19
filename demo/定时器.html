@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBtn=document.getElementsByTagName('input');
+			var oBody=document.body;
+			var arrUrl=['1.jpg','2.jpg','3.jpg','4.jpg']
+			var num = 0;
+			var timer=null;
+			
+			oBtn[0].onclick=function(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					oBody.style.background='url('+arrUrl[num]+')';
+					num++;
+					num%=arrUrl.length;
+				},1000)
+			}
+			oBtn[1].onclick=function(){
+			clearInterval(timer);
+		}
+		}
+		
+	</script>
+</head>
+<body>
+	<input type="button" value="换个背景">
+	<input type="button" value="停">
+</body>
+</html>

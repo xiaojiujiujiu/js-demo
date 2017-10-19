@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="js/angular.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtrller">
+        <p>设置货位:</p>
+        <div class="item" ng-repeat="item in submitData.itemList">
+            <select ng-model="item.number">
+                <option>请选择柜号</option>
+                <option>1111111</option>
+                <option>222222</option>
+                <option>333333</option>
+                <option>44444</option>
+            </select>
+            <select ng-model="item.age">
+                <option>请选择行号</option>
+                <option>AAAAAAAAA</option>
+                <option>VVVVVVVVVV</option>
+                <option>EEEEEEEEE</option>
+                <option>DDDDDDDDDD</option>
+            </select>
+            <select ng-model="item.name" ng-init="item.name =nameList[0]" ng-options="x for x in nameList"></select>
+            <input type="button" ng-click="addItem()" value="添加" />
+        </div>
+        <input type="button" value="确定" ng-click="submit()" />
+    </div>
+    <script>
+        var myapp = angular.module("myApp", []);
+        myapp.controller("myCtrller", function ($scope) {
+
+            /*  设置选项 */
+            $scope.nameList = ['111', 'eeeeee', 'eeeeeeew', 'wwwww'];
+
+            /*  定义要传递给后台的 数据集合 */
+            $scope.submitData = {
+                itemList: [
+                    { 'number': '', 'age': '', 'name': 'wwwww' }
+                ]
+            };
+            console.log($scope.submitData.itemList);
+            $scope.addItem = function () {
+                $scope.submitData.itemList.push({
+                    'number': '',
+                    'age': '',
+                    'name': ''
+                })
+            }
+            $scope.submit = function () {
+                console.log($scope.submitData);
+                    
+            }
+        })
+    </script>
+</body>
+</html>

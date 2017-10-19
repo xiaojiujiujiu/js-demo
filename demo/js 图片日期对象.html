@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js 日期对象</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			setInterval(toTime, 1000)
+			function toTime(){
+				var str='';
+				var oBody=document.body;
+				var oP=document.getElementById('time');
+				var oImg=document.getElementsByTagName('img')
+				var items=new Date();
+				var iHours=items.getHours();
+				var iMinutes=items.getMinutes();
+				var iSeconds=items.getSeconds();
+				str=toTwo(iHours)+toTwo(iMinutes)+toTwo(iSeconds);
+				oP.innerHTML=str;
+				for(var i=0;i<str.length;i++){
+					oImg[i].src='img/'+ str.charAt(i)+'.png';
+				}
+			}
+			function toTwo(n){
+				return n<10?"0"+n:""+n;
+			}
+		}
+for(var i=0;i<3;i++){
+	var a+=i
+	console.log(a)
+}
+
+	</script>
+</head>
+<body>
+	<p id='time'></p>
+	<img src="img/0.png" alt="">
+	<img src="img/0.png" alt="">
+	<img src="img/0.png" alt="">
+	<img src="img/0.png" alt="">
+	<img src="img/0.png" alt="">
+	<img src="img/0.png" alt="">
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<script type="text/javascript">
+		var iNow=new Date();
+		var iNew=new Date(2017,9,10,17,30,0);
+		var s=Math.floor((iNew-iNow)/1000);
+		var str=Math.floor(s/86400)+'天'+Math.floor(s%86400/3600)+'时'+Math.floor(s%86400%3600/60)+'分'+Math.floor(s%60)+'秒';
+		alert(str);
+
+		var  arr=[3,4,1,45,68,23,65];
+	for(var j=0;j<arr.length-1;j++){
+		for(var i=0;i<arr.length-1;i++){
+		if(arr[i]>arr[i+1]){
+			var num=arr[i];
+			arr[i]=arr[i+1];
+			arr[i+1]=num;
+		}
+	}
+	}
+	console.log(arr);
+
+	var a=0;
+	function sunNumber(x) {
+		if(x>0){
+			a+=x;
+			sunNumber(x-1);
+		}
+	}
+	sunNumber(5);
+	console.log(a);
+
+	var a=[1,2,2,3,4,4,4,44,33,335,6,6,7,33,5]
+	var n=[];
+	for(var i=0;i<a.length;i++){
+		if(n.indexOf(a[i])==-1){
+			n.push(a[i])
+		}
+	}
+	console.log(n);
+	window.onload=function(){
+		var flag=true;
+		var oBtn=document.getElementById('button');
+		var oDiv=document.getElementById('odiv');
+		oBtn.onclick=function(){
+			if(flag){
+				oDiv.style.display="none";
+				this.value="显示";
+				flag=false;
+			}else{
+				oDiv.style.display="block";
+				this.value="隐藏";
+				flag=true;
+			}
+	}
+	}
+	</script>
+</head>
+<body>
+	<input type="button" value="button" id="button"/>
+	<div id="odiv" style="width:200px;height:200px;background:red;"></div>
+</body>
+</html>

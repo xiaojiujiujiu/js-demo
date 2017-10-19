@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取dom属性</title>
+	<style type="text/css">
+		div{width:100px;height: 100px;background: red;}
+	</style>
+	<script type="text/javascript">
+		function $(v){
+		   	if(typeof v==="function"){
+		   		window.onload = v;
+		   	}else if(typeof v==="string"){
+		   	
+		   		return document.getElementById(v);
+		   	} else if(typeof v==="object"){
+		   		return v;
+		   	}
+	   }
+		$(function(){
+			$('but1').onclick=function(){
+				//alert(getComputedStyle($("div1")).width);
+				//alert($("div1").currentStyle.width);
+				// if($("div1").currentStyle){
+				// alert($("div1").currentStyle.width);
+				// 	}else{
+				// 		alert(getComputedStyle($("div1")).width);
+				// 	}
+				$("div1").currentStyle?alert($("div1").currentStyle.width):alert(getComputedStyle($("div1")).width);
+			}
+
+		})
+	   
+	</script>
+</head>
+<body>
+	<input type="button" value="button" id="but1"/>
+	<div id="div1"></div>
+</body>
+</html>

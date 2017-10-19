@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抖一抖</title>
+	<style type="text/css">
+		#img1{width: 150px;height: 150px;position: absolute;left: 300px;top:200px;}
+				*{margin:0;padding:0;}
+	</style>
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			
+			var img=document.getElementById('img1');
+			img.onclick=function(){
+				shake(this,"left",function(){
+					shake(img,"top")
+				})
+			}
+
+			function shake(obj,attr,endfn){
+				clearInterval(obj.timer);
+				var arr=[];
+				var num=0;
+				var pos=parseInt(getStyle(obj,attr));
+				for(var i=20;i>0;i-=2){
+					arr.push(i,-i);
+				}
+				arr.push(0);
+				obj.timer=setInterval(function(){
+					obj.style[attr]=pos+arr[num]+'px';
+					num++
+					if(num==arr.length){
+						clearInterval(obj.timer);
+						endfn && endfn();
+					}
+				}, 20)
+			}
+			
+		}
+	</script>
+</head>
+<body>	
+		<img src='1.jpg' id="img1"/>
+</body>
+</html>

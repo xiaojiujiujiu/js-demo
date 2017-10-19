@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// function fun(n,o) {
+		//   console.log(o)
+		//   return {
+		//     fun:function(m){
+		//       return fun(m,n);
+		//     }
+		//   };
+		// }
+		// var a=fun(0).fun(1).fun(2).fun(3);
+
+		window.onload=function(){
+			var  a=[1,2,4,5,6,3,47,7];
+			var str='';
+			for(var i=0;i<a.length;i++){
+				if(i%2!=0){
+					str+=a[i]+';'
+				}else{
+					str+=a[i]+','
+				}
+			}
+			console.log(str)
+
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

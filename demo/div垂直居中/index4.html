@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垂直水平居中</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+        .container{
+            display: table-cell;
+            padding: 100px;
+            vertical-align: middle;
+            text-align: center;
+            border: 1px solid red;
+        }
+        .container img{
+            width: 200px;
+        }
+        .container span{
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="container">
+        <span>块级元素</span>
+        <img  src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1498123193&di=0643c10d5caf0853588493fffff92507&src=http://img22.mtime.cn/up/2011/11/25/090615.21260306_500.jpg" />
+    </div>
+</div>
+
+</body>
+</html>

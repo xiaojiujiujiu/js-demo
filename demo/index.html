@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片轮播</title>
+	<style type="text/css">
+		#content{width: 300px;height: 300px;margin:100px auto;border: 5px #000 solid;position: relative;}
+		#content a{position: absolute;width: 30px;height: 30px;background: #000;opacity: 0.5;font-size: 30px;line-height: 30px;text-align: center; top:130px;border: 5px solid #fff;text-decoration: none;color: #fff;}
+		#content a:hover{opacity: 1;}
+		#prev{right: 5px;}
+		#next{left: 5px;}
+		#p,#span{width: 100%;height: 30px;text-align: center;line-height: 30px; background: #000;opacity: 0.5;color: #fff;position: absolute;}
+		#p{bottom: 0;margin: 0;}
+		#span{top: 0;}
+		#content img{width: 100%;height: 100%;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oPrev=document.getElementById("prev");
+			var oNext=document.getElementById("next");
+			var oP=document.getElementById("p");
+			var oSpan=document.getElementById("span");
+			var oImg=document.getElementById("img");
+			var arrSrc=['1.jpg','2.jpg','3.jpg','4.jpg'];
+			var arrText=['带你去看星空','你永远在我可望不可及的地方','我一直都在从未离开','大手牵小手']
+			var num=0;
+			function clickp(){
+				oImg.src=arrSrc[num];
+				oSpan.innerHTML=num+1+'/'+arrSrc.length;
+				oP.innerHTML=arrText[num];
+			}
+			clickp();
+			oPrev.onclick=function(){
+				num++;
+				if(num==arrSrc.length){
+					num=0;
+				}
+				clickp();
+			}
+			oNext.onclick=function(){
+				num--;
+				if(num==-1){
+					num=arrSrc.length-1;
+				}
+				clickp();
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="content">
+		<a href="javascript:;" id="prev">></a>
+		<a href="javascript:;" id="next"><</a>
+		<p id="p">图片加载中。。。</p>
+		<span id="span">数量计算中。。。</span>
+		<img alt="" id="img">
+	</div>
+</body>
+</html>

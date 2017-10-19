@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义属性</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var Input=document.getElementsByTagName("input");
+			var arr=['1','2','3','4'];
+			for(var i=0;i<Input.length;i++){
+				Input[i].num=0;
+				Input[i].onclick=function(){
+					this.value=arr[this.num];
+					this.num++;
+					if(this.num===arr.length){
+						this.num=0;
+					}
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value='0'/>
+	<input type="button" value='0'/>
+	<input type="button" value='0'/>
+</body>
+</html>
